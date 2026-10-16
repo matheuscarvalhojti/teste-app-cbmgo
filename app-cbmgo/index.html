@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#a51f23">
+  <link rel="icon" href="data:,">
+  <title>Avaliação preliminar | CBMGO</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <script defer src="js/dados-tabela1.js"></script>
+  <script defer src="js/dados-tabela5.js"></script>
+  <script defer src="js/dados-tabela6.js"></script>
+  <script defer src="js/dados-tabela7.js"></script>
+  <script defer src="js/dados-tabela8.js"></script>
+  <script defer src="js/classificacao.js"></script>
+  <script defer src="js/processo.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero__inner">
+      <span class="eyebrow">FERRAMENTA INFORMATIVA</span>
+      <h1>Avaliação preliminar de segurança</h1>
+      <p>Informe características básicas do estabelecimento para organizar pontos que precisam de conferência.</p>
+    </div>
+  </header>
+  <main class="container">
+    <div class="notice notice--warning" role="note">
+      <strong>Aviso importante</strong>
+      <p>Resultado exclusivamente orientativo; não substitui a análise técnica do CBMGO nem a responsabilidade de profissional habilitado (item 2.1.1 da NT 01/2026). As matrizes do Anexo A dependem de conferência com a publicação oficial vigente.</p>
+    </div>
+    <form id="formulario">
+      <fieldset>
+        <legend>1. Identificação da atividade</legend>
+        <label for="divisao">Divisão da ocupação <span class="required">*</span></label>
+        <select id="divisao" name="divisao" required>
+          <option value="">Selecione uma divisão</option>
+        </select>
+        <p class="help">Divisões e descrições compiladas da Tabela 1 do Anexo A da NT 01/2026.</p>
+        <div class="grid grid--2">
+          <div><label for="dataConstrucao">Data de construção / ocupação</label><input id="dataConstrucao" name="dataConstrucao" type="date"></div>
+          <div><label for="mudancaRisco">Houve mudança de risco ou de proprietário?</label><select id="mudancaRisco" name="mudancaRisco"><option value="nao">Não</option><option value="sim">Sim</option></select></div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>2. Características da edificação</legend>
+        <div class="grid grid--2">
+          <div><label for="area">Área construída (m²) <span class="required">*</span></label><input id="area" name="area" type="number" min="0" step="0.01" required></div>
+          <div><label for="altura">Altura considerada (m) <span class="required">*</span></label><input id="altura" name="altura" type="number" min="0" step="0.01" value="0" required></div>
+          <div><label for="pavimentos">Número de pavimentos <span class="required">*</span></label><input id="pavimentos" name="pavimentos" type="number" min="1" step="1" value="1" required></div>
+          <div><label for="lotacao">Lotação máxima de público/pessoas</label><input id="lotacao" name="lotacao" type="number" min="0" step="1" value="0"></div>
+          <div><label for="areaEvento">Área do evento temporário (m²), se aplicável</label><input id="areaEvento" name="areaEvento" type="number" min="0" step="0.01" value="0"></div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>3. Subsolo</legend>
+        <div class="grid grid--2">
+          <div><label for="areaSubsolo">Área total de subsolo (m²)</label><input id="areaSubsolo" name="areaSubsolo" type="number" min="0" step="0.01" value="0"></div>
+          <div><label for="areaGaragemInterna">Área de garagens internas (m²), se houver</label><input id="areaGaragemInterna" name="areaGaragemInterna" type="number" min="0" step="0.01" placeholder="Deixe em branco se não souber"></div>
+          <div><label for="areaDeposito">Área de depósito (m²), se houver</label><input id="areaDeposito" name="areaDeposito" type="number" min="0" step="0.01" placeholder="Informe se houver depósito"></div>
+          <div><label for="alturaExpositores">Altura dos expositores (m), se houver</label><input id="alturaExpositores" name="alturaExpositores" type="number" min="0" step="0.01" placeholder="Informe se houver expositores"></div>
+          <div><label for="nivelSubsolo">Nível mais profundo</label><select id="nivelSubsolo" name="nivelSubsolo"><option value="1">1º subsolo</option><option value="2">2º subsolo</option><option value="3">3º ou demais subsolos</option></select></div>
+          <div class="grid__full"><label for="usoSubsolo">Uso principal do subsolo</label><select id="usoSubsolo" name="usoSubsolo"><option value="estacionamento">Estacionamento</option><option value="deposito">Depósito</option><option value="reuniao">Reunião de público</option><option value="outras">Outras ocupações</option></select></div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>4. Riscos e instalações específicas</legend>
+        <div class="grid grid--2">
+          <div><label for="glpKg">GLP no local (kg)</label><input id="glpKg" name="glpKg" type="number" min="0" step="0.1" value="0"></div>
+          <div><label for="liquidosLitros">Líquidos inflamáveis/combustíveis (L)</label><input id="liquidosLitros" name="liquidosLitros" type="number" min="0" step="1" value="0"></div>
+          <label class="check"><input type="checkbox" name="cozinhaProfissional"> Cozinha profissional</label>
+          <label class="check"><input type="checkbox" name="produtosPerigosos"> Produtos perigosos ou explosivos</label>
+          <label class="check"><input type="checkbox" name="armazenamento"> Armazenamento relevante / depósito</label>
+          <label class="check"><input type="checkbox" name="fotovoltaico"> Sistema fotovoltaico</label>
+          <label class="check"><input type="checkbox" name="recargaVeiculos"> Recarga de veículos elétricos</label>
+          <label class="check"><input type="checkbox" name="comercializaGLP"> Comercializa GLP</label>
+          <label class="check"><input type="checkbox" name="isolamentoRiscoNecessario"> A regularização exige comprovação de isolamento de risco conforme NT-07</label>
+          <label class="check"><input type="checkbox" name="atividadeResidencialSemRecepcao"> Atividade realizada na residência do empreendedor, sem recepção de pessoas</label>
+          <label class="check"><input type="checkbox" name="outrasAtividadesOutroRisco"> Exerce outras atividades classificadas em outro nível de risco</label>
+          <label class="check"><input type="checkbox" name="aberturasEdificacoesAdjacentes"> Há portas, janelas ou telhados com abertura para edificação adjacente</label>
+          <label class="check"><input type="checkbox" name="areaComumEdificioComExcecao"> Área comum de shopping, edifício comercial ou galeria para exceção do item 6.2.1.2(a)</label>
+          <label class="check"><input type="checkbox" name="produtosPerigosos"> Comercializa, manipula ou armazena produtos perigosos</label>
+          <label class="check"><input type="checkbox" name="explosivos"> Comercializa, produz ou armazena fogos de artifício ou outros explosivos</label>
+          <label class="check"><input type="checkbox" name="caldeiras"> Possui caldeira</label>
+          <label class="check"><input type="checkbox" name="primeiroLicenciamentoShopping"> Primeiro licenciamento dentro de shopping, edifício comercial ou galeria com detecção e chuveiros automáticos</label>
+        </div>
+      </fieldset>
+      <fieldset id="camposEspeciaisFieldset" hidden>
+        <legend>Dados complementares para Tabelas 6M</legend>
+        <div id="campoTunel" hidden>
+          <label for="comprimentoTunel">Extensão do túnel (m)</label>
+          <input id="comprimentoTunel" name="comprimentoTunel" type="number" min="0" step="0.1">
+          <p class="help">A seleção da coluna da Tabela 6M.1 depende da extensão total.</p>
+        </div>
+        <div id="campoM2" hidden>
+          <label for="categoriaM2">Categoria de armazenamento da Tabela 6M.2</label>
+          <select id="categoriaM2" name="categoriaM2">
+            <option value="">Selecione conforme o projeto e a norma específica</option>
+            <option value="0">Tanques/cilindros: líquidos até 20 m³ ou GLP até 10 m³</option>
+            <option value="1">Tanques/cilindros: líquidos acima de 20 m³ ou GLP acima de 10 m³</option>
+            <option value="2">Plataformas de carregamento</option>
+            <option value="3">Produtos acondicionados: líquidos até 20 m³ ou GLP até 12.480 kg</option>
+            <option value="4">Produtos acondicionados: líquidos acima de 20 m³ ou GLP acima de 12.480 kg</option>
+          </select>
+          <p class="help">A categoria é um enquadramento técnico; confirme a unidade, capacidade e critérios da Tabela 6M.2.</p>
+        </div>
+      </fieldset>
+      <fieldset id="eventoFieldset" hidden>
+        <legend>5. Evento temporário (F-7)</legend>
+        <div class="grid grid--2">
+          <div><label for="publicoEvento">Público previsto</label><input id="publicoEvento" name="publicoEvento" type="number" min="0" step="1" value="0"></div>
+          <div><label for="diasEvento">Duração (dias)</label><input id="diasEvento" name="diasEvento" type="number" min="1" step="1" value="1"></div>
+          <div><label for="alturaEstrutura">Altura de estruturas temporárias (m)</label><input id="alturaEstrutura" name="alturaEstrutura" type="number" min="0" step="0.1" value="0"></div>
+          <div><label for="areaPrivativaPublico">Área privativa para público em camarotes/arquibancadas/estruturas cercadas (m²)</label><input id="areaPrivativaPublico" name="areaPrivativaPublico" type="number" min="0" step="0.01" value="0"></div>
+          <label class="check"><input type="checkbox" name="eventoAreaPublicaAberta"> Evento em área pública aberta lateralmente</label>
+          <label class="check"><input type="checkbox" name="eventoTemCamarote"> Possui camarotes/arquibancadas destinados ao público</label>
+          <label class="check"><input type="checkbox" name="eventoEstruturaFechada"> Possui estrutura fechada ou área cercada para o público</label>
+          <label class="check"><input type="checkbox" name="eventoEstrutura"> Evento com estrutura temporária</label>
+        </div>
+      </fieldset>
+      <button class="button" type="submit">Avaliar estabelecimento</button>
+    </form>
+    <section id="resultado" class="result" aria-live="polite" aria-atomic="false"></section>
+  </main>
+  <footer><p>Protótipo informativo • Confira a legislação e as publicações oficiais vigentes.</p></footer>
+</body>
+</html>
